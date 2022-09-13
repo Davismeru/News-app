@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+:root {
+    --pink: rgba(255, 122, 122, 0.829);
+    --whitish: #f0ffff;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+/* header styling */
+header {
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+}
+
+.bg {
+   position: absolute;
+   top: 0;
+   width: 100%;
+   z-index: -1;
+   height: 100%;
+}
+.svg-bg {
+    fill: var(--pink);
+}
+
+.header-content {
+    color: var(--whitish);
+    text-align: center;
+}
+
+/* articles */
+.articles {
+    position: absolute;
+    width: 100%;
+    z-index: -2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+article {
+    width: 70%;
+    box-shadow: 1px 1px 5px lightgrey;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 2px;
+    margin: 20px 0;
+    font-size: 1rem;
+}
+
+.article-intro {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    z-index: -1;
+}
+
+.article-intro h2 {
+    color: grey;
+    text-transform: capitalize;
+}
+
+.article-intro p {
+    margin-bottom: 10px;
+}
+
+.view-btn {
+    width: 5%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--pink);
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+/* selected category */
+.selected-category {
+    background: rgba(255, 255, 255, 0.9);
+    min-height: 100vh;
+    width: 80%;
+    position: fixed;
+    top: 0;
+    align-self: center;
+    visibility: hidden; /* hidden by default */
+}
+
+.show-category { /* add this class to make the selected category container visible */
+    visibility: visible;
+}
+
+.category-header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    padding: 10px;
+    color: grey;
+    font-weight: 900;
+}
