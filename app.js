@@ -27,12 +27,51 @@ allArticles.forEach(article => {
     const viewBtn = article.querySelector('.view-btn')
     viewBtn.addEventListener('click', (e)=> {
         selectedCategory.classList.add('show-category')
-        console.log(e.currentTarget.parentElement);
+        const classParent = e.currentTarget.parentElement.classList
+        allTopics.filter((selectedTopic)=> {
+            if(classParent == selectedTopic.category) {
+                selectedCategory.innerHTML += `
+                    <div class="topic">
+                        <!-- view before the expanded card -->
+                        <div class="mini">
+                            <div class="mini-img">
+                                <img src=${selectedTopic.imgSrc}>
+                            </div>
+                            <div class="topic-details">
+                                <h4>${selectedTopic.topic}</h4>
+                                <h6>9 September 2022</h6>
+                                <input type="button" value="expand">
+                            </div>
+                        </div>
+
+                        <!-- view after expanding -->
+                        <div class="topic-expanded card-hidden">
+                            <div class="expanded-img">
+                                <img src=${selectedTopic.imgSrc}>
+                            </div>
+
+                            <div class="expanded-content">
+                                <div class="topic-details">
+                                    <h4>${selectedTopic.topic}</h4>
+                                    <h6>9 September 2022</h6>
+                                </div>
+
+                                <article>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae iste dicta corporis omnis, impedit accusamus enim vel. Quam, repellat ducimus.
+                                </article>
+
+                                <input type="button" value="See story">
+                            </div>
+                        </div>
+                    </div>`
+            }
+
+            
+        })
     })
 })
 
-// close selected category page
-const closeBtn = selectedCategory.querySelector('.fa-x')
-closeBtn.addEventListener('click', ()=> {
-    selectedCategory.classList.remove('show-category')
-})
+// topics position from top
+const categoryHeader = selectedCategory.querySelector('.category-header')
+const categoryHeaderHeight = categoryHeader.clientHeight
+selectedCategory.style.paddingTop = `${categoryHeaderHeight}px`
